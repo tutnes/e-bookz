@@ -175,6 +175,70 @@ No DRM removal or DRM-bypassing conversion was attempted.
 
 The main book payload and metadata payload appear DRM-protected, and I did not attempt to strip DRM or convert the protected content into a DRM-free EPUB.
 
+## Note on `kindlekey.py`
+
+The file `kindlekey.py` from the DeDRM tools project does not directly operate on the ebook package stored in this directory.
+
+Based on inspection of that script, its purpose is to locate and decrypt Kindle for Mac/PC application key databases such as:
+
+- `.kinf2018`
+- `.kinf2011`
+- `.rainier-2.1.1-kinf`
+- `.kindle-info`
+
+On macOS, it searches for those files in Kindle application support locations under the user's Library directory. It then extracts key material and writes `.k4i` key files.
+
+That means:
+
+- it is not a parser for `BookManifest.kfx`
+- it is not a parser for `.azw8` or `.azw9.md` ebook payloads
+- it is not a parser for the `.res` resource containers
+- it is not useful for the `.asc` JSON metadata sidecars in this directory
+
+At most, it is indirectly related to the DRM-protected files here because it targets separate Kindle application key files that other tooling may expect. Those key-source files are not present in this folder.
+
+## Mirrored Package Paths Added To This Project
+
+To preserve the package structure found under `/Users/taru/Library/Containers/com.amazon.Lassen/Data/Library/eBooks`, two book-package trees were copied into this workspace.
+
+Added project-relative paths:
+
+- `B07KPMJ7V9/0CA03070-2144-46D6-AA4C-333C438FE982/`
+- `B0FH2MND28/D24099AF-0B91-4195-80A2-2221210CBF12/`
+
+Copied relevant book-package artifacts only. Kindle application plugin bundles and other non-book directories were not copied.
+
+### `B07KPMJ7V9/0CA03070-2144-46D6-AA4C-333C438FE982/`
+
+Copied files:
+
+- `BookManifest.kfx`
+- `BookManifest.kfx-shm`
+- `BookManifest.kfx-wal`
+- `CR!DHWAV5D6XD73DB1MM1ZFY5A4N9SB.azw9.res`
+- `CR!JRMYN8RV3X55Q6PT435ZQRHJ70X8.azw9.res`
+- `CR!P21H6GAQ2H4N97N0VNMF8X6SJSGA.azw9.md`
+- `CR!SMZCBEXT4N419BS75CJ2FH5PQYCF.azw8`
+- `StartActions.data.B07KPMJ7V9.asc`
+- `EndActions.data.B07KPMJ7V9.asc`
+- `XRAY.entities.B07KPMJ7V9.asc`
+- `amzn1.drm-voucher.v1.5b79c216-9766-45d3-a270-bd9dab81604f.voucher`
+
+### `B0FH2MND28/D24099AF-0B91-4195-80A2-2221210CBF12/`
+
+Copied files:
+
+- `BookManifest.kfx`
+- `BookManifest.kfx-shm`
+- `BookManifest.kfx-wal`
+- `CR!0N17G05W3H1NXDBN0SFM9PKSWDR6.azw9.res`
+- `CR!17Z4WKZYCS5TK3H9JT0BGYJK7MG5.azw8`
+- `CR!QGXR8HX30D0Z122P96MK4B6KTK65.azw9.md`
+- `CR!XQ6P8ZC7TH3TFEKY4YWVP2A55FWT.azw9.res`
+- `StartActions.data.B0FH2MND28.asc`
+- `EndActions.data.B0FH2MND28.asc`
+- `amzn1.drm-voucher.v1.16adf9ce-2ebb-4c7a-9fe3-02acd1563fde.voucher`
+
 ## Safe Next Steps
 
 Potential follow-up work that stays within the current findings:
