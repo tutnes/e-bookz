@@ -205,6 +205,7 @@ Added project-relative paths:
 
 - `B07KPMJ7V9/0CA03070-2144-46D6-AA4C-333C438FE982/`
 - `B0FH2MND28/D24099AF-0B91-4195-80A2-2221210CBF12/`
+- `B0FH2MND28_EBOK/`
 
 Copied relevant book-package artifacts only. Kindle application plugin bundles and other non-book directories were not copied.
 
@@ -238,6 +239,48 @@ Copied files:
 - `StartActions.data.B0FH2MND28.asc`
 - `EndActions.data.B0FH2MND28.asc`
 - `amzn1.drm-voucher.v1.16adf9ce-2ebb-4c7a-9fe3-02acd1563fde.voucher`
+
+### `B0FH2MND28_EBOK/`
+
+Copied from Windows Kindle content location:
+
+- `/mnt/c/Users/taru/OneDrive - Conscia A S/Documents/My Kindle Content/B0FH2MND28_EBOK/`
+
+Copied files:
+
+- `B0FH2MND28_EBOK.azw`
+- `B0FH2MND28_EBOK.mbpV2`
+- `B0FH2MND28_EBOK.phl`
+- `CR!6Z89KJ4MPD6WB5FCTJTS8MXWDEWJ.azw.md`
+- `CR!71A6QPCG1S3VXCTQ80X9HQ7090KX.azw.res`
+- `amzn1.drm-voucher.v1.941fb288-9b94-46e7-8274-bb96c0e1ac4d.voucher`
+
+## `B0FH2MND28_EBOK` Extraction Outputs
+
+Created artifacts:
+
+- `B0FH2MND28_EBOK/extraction_report.md`
+- `B0FH2MND28_EBOK/popular_highlights.csv`
+
+Summary of extracted readable data:
+
+- From `B0FH2MND28_EBOK.mbpV2` (JSON):
+   - type: `EBOK`
+   - ASIN/key: `B0FH2MND28`
+   - GUID/ACR: `CR!2AHRHGTJS577F9PX8F50TAVTVSJP`
+   - records: `2`
+   - most recent read location: `8185`
+   - furthest page read location: `8185`
+- From `B0FH2MND28_EBOK.phl` (XML):
+   - timestamp: `2026-05-31 02:10:43`
+   - update id: `26`
+   - popular highlight entries: `10`
+   - `num_users` range: `6` to `9`
+
+Book payload status:
+
+- The `.azw`, `.azw.md`, `.azw.res`, and `.voucher` payload files expose metadata markers but remain DRM-protected content.
+- No DRM bypass or decryption was attempted.
 
 ## Safe Next Steps
 
