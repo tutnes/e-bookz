@@ -282,6 +282,30 @@ Book payload status:
 - The `.azw`, `.azw.md`, `.azw.res`, and `.voucher` payload files expose metadata markers but remain DRM-protected content.
 - No DRM bypass or decryption was attempted.
 
+## `.kinf2024` Investigation (Windows Kindle Storage)
+
+Inspected file:
+
+- `/mnt/c/Users/taru/AppData/Local/Amazon/Kindle/storage/.kinf2024`
+
+Observed properties:
+
+- File exists and is readable.
+- Size: `132,879` bytes.
+- `file` identifies it as ASCII text with one very long line.
+- Header bytes begin with printable encoded-looking text (not plain JSON/XML).
+
+Tooling compatibility findings in this repository:
+
+- `DeDRM_plugin/kindlekey.py` explicitly supports older key files such as `.kinf2018` and `.kinf2011`, not `.kinf2024`.
+- `.kinf2024` references are present in `Other_Tools/KRFKeyExtractor/KFXKeyExtractor28.cpp` and `KFXArchiver290.cpp`.
+- Those `.cpp` tools are Windows-specific and include strict Kindle executable version assumptions.
+
+Practical result in this workspace:
+
+- In the current Linux workspace, there is no ready Python path in the bundled DeDRM plugin to process `.kinf2024` directly.
+- The included `.kinf2024` handling appears tied to Windows-native tooling in `Other_Tools/KRFKeyExtractor`.
+
 ## Safe Next Steps
 
 Potential follow-up work that stays within the current findings:
